@@ -1,0 +1,13 @@
+name: Run build
+on:
+  push:
+    branches: 
+      - master
+jobs:
+  build:
+    runs-on: [ubuntu-latest]
+    name: Run build
+    steps:
+      - name: run install and build
+        run: npm install && npm run build
+    
