@@ -1,12 +1,33 @@
-# .github/workflows/ci.yml
-name: CI
-on: [push]
+name: 'Deploy'
+on: ['deployment']
 
 jobs:
-  ci:
-    runs-on: ubuntu-latest
+  deployment:
+    runs-on: 'ubuntu-latest'
     steps:
-    - uses: actions/checkout@v1
-    - name: install, build, and test
+    - name: 'Checkout'
+      uses: 'actions/checkout@v1'
+
+    - name: 'Deployment pending'
+      uses: 'deliverybot/deployment-status@master'
+      with:
+        state: 'pending'
+        token: '$'
+
+    - name: 'Deploy $'
       run: |
-        echo 'ok'
+        echo 'YOUR CODE HERE'
+
+    - name: 'Deployment success'
+      if: success()
+      uses: 'deliverybot/deployment-status@master'
+      with:
+        state: 'success'
+        token: '$'
+
+    - name: 'Deployment failure'
+      if: failure()
+      uses: 'deliverybot/deployment-status@master'
+      with:
+        state: 'failure'
+        token: '$'
