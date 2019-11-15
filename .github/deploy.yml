@@ -1,4 +1,12 @@
-# View examples and documentation at https://deliverybot.dev/docs/
-production:
-  environment: production
-  production_environment: true
+# .github/workflows/ci.yml
+name: CI
+on: [push]
+
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: install, build, and test
+      run: |
+        echo 'ok'
