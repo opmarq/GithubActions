@@ -1,5 +1,5 @@
 # .github/workflows/deployment.yml
-name: Deployment
+name: 'Deployment'
 
 on: ['deployment']
 
@@ -14,7 +14,7 @@ jobs:
         state: 'pending'
         token: '${{ github.token }}'
 
-    - name: deploy
+    - name: 'deploy'
       run: |
         echo "environment - ${{ github.event.deployment.task }}"
         echo "payload - ${{ github.event.deployment.payload }}"
